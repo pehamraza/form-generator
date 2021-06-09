@@ -26,15 +26,7 @@
     "default_value": "peham@test.com",
     "options": null
   },
-  {
-    "field_name": "Password",
-    "field_id": "password",
-    "field_type": "password",
-    "field_read_permission": "true",
-    "field_write_permission": "true",
-    "default_value": "Password",
-    "options": null
-  },
+
   {
     "field_name": "Gender",
     "field_id": "gender",
@@ -42,7 +34,7 @@
     "field_read_permission": "true",
     "field_write_permission": "true",
     "default_value": "male",
-    "options": ["male", "female", "I don't want to share"]
+    "options": ["male", "female", "other"]
   },
   {
     "field_name": "Interests",
@@ -51,15 +43,15 @@
     "field_read_permission": "true",
     "field_write_permission": "true",
     "default_value": "Programming",
-    "options": ["Gaming", "Programming", "Soccer", "Baseball", "Golf", "Reading"]
+    "options": ["Gaming", "Programming", "Soccer", "Golf", "Reading"]
   },
   {
-    "field_name": "Tell us about yourself",
-    "field_id": "about",
+    "field_name": "Message",
+    "field_id": "message",
     "field_type": "textarea",
     "field_read_permission": "true",
     "field_write_permission": "true",
-    "default_value": "Why would I tell you",
+    "default_value": "I want to know more about your services. Please get back to me when you can.",
     "options": null
   }
 
