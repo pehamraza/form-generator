@@ -69,6 +69,7 @@ class Form
                                     type="'.$element->field_type.'" 
                                     value="'.$element->default_value.'" 
                                     placeholder="'.$element->field_name.'" 
+                                    '.(!$element->field_write_permission ? ' disabled ': '').'
                                     '.($this->all_fields_required ? 'required="required"': '').' />';
 
         $created_element = '
@@ -88,6 +89,7 @@ class Form
                                                 placeholder="'.$element->field_name.'"
                                                 name="'.$element->field_id.'"
                                                 class="form-control"
+                                                '.(!$element->field_write_permission ? ' disabled ': '').'
                                                 '.($this->all_fields_required ? 'required="required"': '').'>'.
                                                 $element->default_value.'</textarea>';
                 break;
