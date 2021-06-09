@@ -183,7 +183,7 @@ class Form
             e.preventDefault();
             
             $.ajax({
-                url: "submit.php",
+                url: "backend/submit.php",
                 dataType: "html",
                 data: form.serialize(),
                 method: "POST",

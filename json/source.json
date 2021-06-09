@@ -20,7 +20,7 @@
   {
     "field_name": "Email",
     "field_id": "email",
-    "field_type": "text",
+    "field_type": "email",
     "field_read_permission": "true",
     "field_write_permission": "true",
     "default_value": null,

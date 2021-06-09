@@ -4,9 +4,9 @@ load_form();
 
 function load_form(){
     $.ajax({
-        url: 'load_form.php',
+        url: 'backend/load_form.php',
         dataType: 'html',
-        data: {source: 'source.json', method: 'POST', url: 'submit.php'},
+        data: {source: '../json/source.json', method: 'POST', url: 'backend/submit.php'},
         method: "POST",
         beforeSend: function(e){
             $('#loading').show();
