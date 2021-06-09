@@ -84,55 +84,68 @@ class Form
 
             case Field_types::TEXTAREA:
                 $use_default_input = false;
-                $created_element .= $label.'<br>';
-                $created_element .= '<textarea id="'.$element->field_id.'" 
-                                                placeholder="'.$element->field_name.'"
-                                                name="'.$element->field_id.'"
+                if($element->field_read_permission) {
+                    $created_element .= $label . '<br>';
+                    $created_element .= '<textarea id="' . $element->field_id . '" 
+                                                placeholder="' . $element->field_name . '"
+                                                name="' . $element->field_id . '"
                                                 class="form-control"
-                                                '.(!$element->field_write_permission ? ' disabled ': '').'
-                                                '.($this->all_fields_required ? 'required="required"': '').'>'.
-                                                $element->default_value.'</textarea>';
+                                                minlength="10"
+                                                ' . (!$element->field_write_permission ? ' disabled ' : '') . '
+                                                ' . ($this->all_fields_required ? ' required="required" ' : '') . '>' .
+                        $element->default_value . '</textarea>';
+                }
                 break;
 
             case Field_types::SELECT:
-                $created_element .= $label;
-                $created_element .= '<select value="'.$element->default_value.'" id="'.$element->field_id.'" '.
-                                    (!$element->field_write_permission ? ' disabled ': '').
-                                    ($this->all_fields_required ? 'required="required"': '').'>';
+                if($element->field_read_permission) {
+                    $created_element .= $label;
+                    $created_element .= '<select value="' . $element->default_value . '" id="' . $element->field_id . '" ' .
+                        (!$element->field_write_permission ? ' disabled ' : '') .
+                        ($this->all_fields_required ? 'required="required"' : '') . '>';
 
-                if(isset($element->options)){
-                    foreach ($element->options as $option){
-                        $created_element .= ' <option value="'.$option.'"'.
-                            ($element->default_value == $option ? ' selected="selected"': '').'>'.$option.'</option>';
+                    if (isset($element->options)) {
+                        foreach ($element->options as $option) {
+                            $created_element .= ' <option value="' . $option . '"' .
+                                ($element->default_value == $option ? ' selected="selected"' : '') . '>' . $option . '</option>';
+                        }
                     }
-                }
 
-                $created_element.='</select>';
+                    $created_element .= '</select>';
+                }
                 break;
 
             case Field_types::RADIO:
                 $use_default_input = false;
-                $created_element .= $label;
-                if(isset($element->options)){
-                    foreach ($element->options as $option){
-                        $created_element .= ' <input type="'.$element->field_type.'" value="'.$option.'" name="'.$element->field_id.'" '.
-                                            ($this->all_fields_required ? 'required="required"': '')
-                                            .($element->default_value == $option ? ' checked="checked"': '').'/>';
-                        $created_element .= ' <label for="'.$option.'"  name="'.$element->field_id.'">'.ucfirst($option).'</label>';
+
+                if($element->field_read_permission){
+                    $created_element .= $label;
+                    if(isset($element->options)){
+                        foreach ($element->options as $option){
+                            $created_element .= ' <input type="'.$element->field_type.'" value="'.$option.'" name="'.$element->field_id.'" '.
+                                                ($this->all_fields_required ? 'required="required"': '').
+                                                (!$element->field_write_permission ? ' disabled ': '').
+                                                ($element->default_value == $option ? ' checked="checked"': '').'/>';
+                            $created_element .= ' <label for="'.$option.'"  name="'.$element->field_id.'">'.ucfirst($option).'</label>';
+                        }
                     }
                 }
+
                 break;
 
             case Field_types::CHECKBOX:
                 $use_default_input = false;
-                $created_element .= $label;
-                if(isset($element->options)){
-                    foreach ($element->options as $option){
-                        $created_element .= '
-                                             <input type="'.$element->field_type.'" value="'.$option.'" name="'.$element->field_id.'[]" class="checkbox" '.
-                                            ($this->all_fields_required ? 'required': '').
-                                            ($element->default_value == $option ? ' checked="checked"': '').'/>';
-                        $created_element .= ' <label for="'.$option.'"  name="'.$element->field_id.'">'.ucfirst($option).'</label>';
+                if($element->field_read_permission) {
+                    $created_element .= $label;
+                    if (isset($element->options)) {
+                        foreach ($element->options as $option) {
+                            $created_element .= '
+                                             <input type="' . $element->field_type . '" value="' . $option . '" name="' . $element->field_id . '[]" class="checkbox" ' .
+                                ($this->all_fields_required ? 'required' : '') .
+                                (!$element->field_write_permission ? ' disabled ' : '') .
+                                ($element->default_value == $option ? ' checked="checked"' : '') . '/>';
+                            $created_element .= ' <label for="' . $option . '"  name="' . $element->field_id . '">' . ucfirst($option) . '</label>';
+                        }
                     }
                 }
                 break;
