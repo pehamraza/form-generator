@@ -27,22 +27,13 @@
     "options": null
   },
   {
-    "field_name": "Password",
-    "field_id": "password",
-    "field_type": "password",
-    "field_read_permission": "true",
-    "field_write_permission": "true",
-    "default_value": null,
-    "options": null
-  },
-  {
     "field_name": "Gender",
     "field_id": "gender",
     "field_type": "radio",
     "field_read_permission": "true",
     "field_write_permission": "true",
     "default_value": null,
-    "options": ["male", "female"]
+    "options": ["male", "female", "Other"]
   },
   {
     "field_name": "Interests",
