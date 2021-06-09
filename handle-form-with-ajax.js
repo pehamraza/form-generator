@@ -1,21 +1,24 @@
 
 load_form();
 
+
 function load_form(){
     $.ajax({
         url: 'load_form.php',
         dataType: 'html',
-        data: {source: 'source.json', method: 'POST'},
+        data: {source: 'source.json', method: 'POST', url: 'submit.php'},
         method: "POST",
         beforeSend: function(e){
-            // $('#loading').show();
+            $('#loading').show();
+            $('#form').hide();
         },
         success: function(e){
-            $('#form').html(e);
+            $('#loading').hide();
+            $('#form').html(e).show();;
         },
         error: function(e){
             $('#loading').hide();
-            $('#form').html(e);
+            $('#form').html(e).show();;
         }
     });
 }

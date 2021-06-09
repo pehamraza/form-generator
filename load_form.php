@@ -5,9 +5,9 @@ if(isset($_POST)){
 
     $source = $_POST['source'];
     $method = $_POST['method'];
-    // $url = $_POST['url'];
+    $url = $_POST['url'];
 
-    $form = new Form($method, $source);
+    $form = new Form($method, $url, $source);
 
     $form->generate();
 }
