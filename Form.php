@@ -5,7 +5,8 @@ require_once 'Field_types.php';
 class Form
 {
     protected $json_source = '';
-    protected $form_type = 'get';
+    protected $form_type = 'get'; // get or post
+    protected $form_action = NULL;
     protected $use_bootstrap = true;
     protected $all_fields_required = true;
     protected $form_elements = NULL;
@@ -13,11 +14,14 @@ class Form
     /**
      * Form constructor.
      * @param $form_type string ['get', 'post']
+     * @param null $form_action
      * @param $json_source string
      */
-    public function __construct($form_type, $json_source){
+    public function __construct($form_type = 'post', $form_action = NULL, $json_source = 'source.json'){
         $this->form_type = $form_type;
+        $this->form_action = $form_action;
         $this->json_source = $json_source;
+
 
         //read file
         $json = @file_get_contents($this->json_source);
@@ -82,6 +86,7 @@ class Form
                 $created_element .= $label.'<br>';
                 $created_element .= '<textarea id="'.$element->field_id.'" 
                                                 placeholder="'.$element->field_name.'"
+                                                name="'.$element->field_id.'"
                                                 class="form-control"
                                                 '.($this->all_fields_required ? 'required="required"': '').'>'.
                                                 $element->default_value.'</textarea>';
@@ -133,7 +138,7 @@ class Form
 
     private function start_form()
     {
-        echo '<form class="form col-md-6" method="'.$this->form_type.'">';
+        echo '<form class="form col-md-6" action="'.$this->form_action.'" method="'.$this->form_type.'">';
     }
 
     private function end_form()
@@ -149,6 +154,7 @@ class Form
         echo '
         <script type="text/javascript">
        
+        let form = $(".form")
         let submitButton = document.querySelector("#submit")
         let checkboxes = document.querySelectorAll("input[type=checkbox]");
         
@@ -158,13 +164,13 @@ class Form
             
             var checked = false;
             for (i=0; i<checkboxes.length; i++){
-                console.log(checkboxes[i].value, checkboxes[i].checked);
                 if(checkboxes[i].checked === true)
                     checked = true;
             }
             if(checked){ // 1 checked reset all others
                 for (i=0; i<checkboxes.length; i++){
                    checkboxes[i].required = false
+                   handle_submission(e);
                 }
             }else{
                 for (i=0; i<checkboxes.length; i++){
@@ -173,13 +179,37 @@ class Form
             }
         });
         
+        function handle_submission(e){
+            e.preventDefault();
+            
+            $.ajax({
+                url: "submit.php",
+                dataType: "html",
+                data: form.serialize(),
+                method: "POST",
+                beforeSend: function(e){
+                    $("#loading").show();
+                    $("#form").hide();    
+                },
+                success: function(e){
+                    setTimeout(function(){
+                        $("#form").html(e).show();
+                        $("#loading").hide();
+                        }, 200);
+                },
+                error: function(e){
+                    $("#loading").hide();
+                    $("#form").html(e).show();
+                }
+
+            });
+            
+        }
+        
         </script>';
 
     }
 
-    public function submit_form(){
-
-    }
 
     protected function add_bootstrap()
     {
