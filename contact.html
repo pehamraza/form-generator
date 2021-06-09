@@ -19,13 +19,33 @@
         <hr>
     </div>
 
-    <div id="loading">
-        <i class="fa fa-spinner fa-spin fa-4x fa-fw"></i>
-        <span class="sr-only">Loading...</span>
+    <div class="row">
+        <div class="col-md-6" id="form-holder">
+            <div id="loading">
+                <i class="fa fa-spinner fa-spin fa-4x fa-fw"></i>
+                <span class="sr-only">Loading...</span>
+            </div>
+
+            <div id="form" class="form">
+            </div>
+        </div>
+        <div class="col-md-6" id="information">
+            <div class="row">
+                <div class="col-md-4"></div>
+                <div class="col-md-8">
+                    <p>
+                    <h3>Information:</h3>
+                    <p><strong>Source JSON: </strong> <a target="_blank" href="json/source.json">source.json</a> <br>
+                        <strong>Test JSON: </strong> <a target="_blank" href="json/test.json">test.json</a> <br>
+                        <strong>Form Class: </strong> <a target="_blank" href="https://github.com/pehamraza/form-generator/blob/main/backend/classes/Form.php">Form Class</a> <br>
+                        <strong>Github <i class="fa fa-github"></i> </strong> <a target="_blank" href="https://github.com/pehamraza/form-generator">View Code</a></p>
+                    </p>
+                </div>
+            </div>
+
+        </div>
     </div>
 
-    <div id="form" class="form">
-    </div>
 
 </div>
 

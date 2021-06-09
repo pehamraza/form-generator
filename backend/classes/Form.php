@@ -138,7 +138,7 @@ class Form
 
     private function start_form()
     {
-        echo '<form class="form col-md-6" action="'.$this->form_action.'" method="'.$this->form_type.'">';
+        echo '<form class="form" action="'.$this->form_action.'" method="'.$this->form_type.'">';
     }
 
     private function end_form()
@@ -194,7 +194,8 @@ class Form
                 success: function(e){
                     setTimeout(function(){
                         $("#form").html(e).show();
-                        $("#loading").hide();
+                        $("#loading, #information").hide();
+                        $("#form-holder").removeClass("col-md-6").addClass("col-md-12");
                         }, 200);
                 },
                 error: function(e){
