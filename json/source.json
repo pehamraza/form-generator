@@ -3,8 +3,8 @@
     "field_name": "First Name",
     "field_id": "first_name",
     "field_type": "text",
-    "field_read_permission": "true",
-    "field_write_permission": "true",
+    "field_read_permission": true,
+    "field_write_permission": true,
     "default_value": null,
     "options": null
   },
@@ -12,8 +12,8 @@
     "field_name": "Last Name",
     "field_id": "last_name",
     "field_type": "text",
-    "field_read_permission": "true",
-    "field_write_permission": "true",
+    "field_read_permission": true,
+    "field_write_permission": false,
     "default_value": null,
     "options": null
   },
@@ -21,8 +21,8 @@
     "field_name": "Email",
     "field_id": "email",
     "field_type": "email",
-    "field_read_permission": "true",
-    "field_write_permission": "true",
+    "field_read_permission": true,
+    "field_write_permission": true,
     "default_value": null,
     "options": null
   },
@@ -30,8 +30,8 @@
     "field_name": "Gender",
     "field_id": "gender",
     "field_type": "radio",
-    "field_read_permission": "true",
-    "field_write_permission": "true",
+    "field_read_permission": false,
+    "field_write_permission": false,
     "default_value": null,
     "options": ["male", "female", "Other"]
   },
@@ -39,8 +39,8 @@
     "field_name": "Interests",
     "field_id": "interests",
     "field_type": "checkbox",
-    "field_read_permission": "true",
-    "field_write_permission": "true",
+    "field_read_permission": true,
+    "field_write_permission": true,
     "default_value": null,
     "options": ["Gaming", "Programming", "Soccer", "Golf", "Reading"]
   },
@@ -48,8 +48,8 @@
     "field_name": "Message",
     "field_id": "message",
     "field_type": "textarea",
-    "field_read_permission": "true",
-    "field_write_permission": "true",
+    "field_read_permission": true,
+    "field_write_permission": true,
     "default_value": null,
     "options": null
   }
