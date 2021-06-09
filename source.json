@@ -42,11 +42,11 @@
     "field_read_permission": "true",
     "field_write_permission": "true",
     "default_value": null,
-    "options": ["Gaming", "Programming", "Soccer", "Baseball", "Golf", "Reading"]
+    "options": ["Gaming", "Programming", "Soccer", "Golf", "Reading"]
   },
   {
-    "field_name": "Tell us about yourself",
-    "field_id": "about",
+    "field_name": "Message",
+    "field_id": "message",
     "field_type": "textarea",
     "field_read_permission": "true",
     "field_write_permission": "true",
