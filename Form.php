@@ -133,7 +133,6 @@ class Form
 
     private function start_form()
     {
-        echo '<h3>Test for Sam</h3>';
         echo '<form class="form col-md-6" method="'.$this->form_type.'">';
     }
 
