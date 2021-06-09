@@ -93,8 +93,18 @@ class Form
                 break;
 
             case Field_types::SELECT:
+                $created_element .= $label;
                 $created_element .= '<select value="'.$element->default_value.'" id="'.$element->field_id.'" '.
+                                    (!$element->field_write_permission ? ' disabled ': '').
                                     ($this->all_fields_required ? 'required="required"': '').'>';
+
+                if(isset($element->options)){
+                    foreach ($element->options as $option){
+                        $created_element .= ' <option value="'.$option.'"'.
+                            ($element->default_value == $option ? ' selected="selected"': '').'>'.$option.'</option>';
+                    }
+                }
+
                 $created_element.='</select>';
                 break;
 
