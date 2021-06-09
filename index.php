@@ -1,7 +1,7 @@
 <?php
     require_once 'Form.php';
 
-    $form_type = 'get';
+    $form_type = 'get'; // get or post
     $json_source = 'source.json';
 
     $form = new Form($form_type, $json_source);

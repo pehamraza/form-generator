@@ -17,3 +17,5 @@ Use the class "Form.php" as
 ```
 
 Turn off bootstrap styling by setting the "$use_bootstrap" class property to false  
+
+Switch between get or post method for form by changing the form_type value to post.
