@@ -3,7 +3,7 @@ load_form();
 
 function load_form(){
     $.ajax({
-        url: 'endpoint.php',
+        url: 'load_form.php',
         dataType: 'html',
         data: {source: 'source.json', method: 'POST'},
         method: "POST",
@@ -15,6 +15,7 @@ function load_form(){
         },
         error: function(e){
             $('#loading').hide();
+            $('#form').html(e);
         }
     });
 }
